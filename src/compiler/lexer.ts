@@ -1,6 +1,7 @@
 import { createLexer } from './base/lexer'
 
 export enum TokenTypes {
+  tabulation = 'tabulation',
   integer = 'integer',
   float = 'float',
   string = 'string',
@@ -12,6 +13,7 @@ export enum TokenTypes {
 }
 
 const lexer = createLexer([
+  { pattern: '[\\s\\t\\n]+', tokenType: TokenTypes.tabulation },
   { pattern: '[0-9]+', tokenType: TokenTypes.integer },
   { pattern: '[0-9]+\\.[0-9]+', tokenType: TokenTypes.float },
   { pattern: '".+"', tokenType: TokenTypes.string },
